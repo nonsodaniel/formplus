@@ -21,3 +21,32 @@
     border: 1px solid transparent;
     border-radius: .25rem;
 }
+
+@media (max-width: 768px){
+    .templates {
+        grid-template-columns: 3fr;
+    }
+}
+
+@media (max-width: 992px){
+    .header-wrap {
+       flex-direction: column;
+       margin: 1rem auto 1rem auto;
+    }
+    .form-tag{
+        margin: 1rem auto;
+        width: 100%;
+    }
+    .sort-row{
+        flex-direction: column;
+    }
+    .sort-items{
+        margin-bottom: 1rem;
+    }
+    .templates {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
