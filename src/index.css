@@ -1,11 +1,20 @@
-:root {
+/* @font-face{
+  font-family: Circular Std;
+  font-style: normal;
+  font-weight: 500;
+  src: url("./components/assets/Circular\ Std\ Font.otf");
+} */
 
+:root {
+  /* --text-desc: font; */
   }
   *{
     margin: 0;
     padding: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
   }
+
   
   body {
       font-family:Circular Std;
@@ -35,3 +44,10 @@
       margin-right: -15px;
       margin-left: -15px;
     }
+    .card{
+      background: #fff;
+    border-radius: .428rem;
+    box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
+}
+
+
