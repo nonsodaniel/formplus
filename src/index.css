@@ -1,0 +1,15 @@
+:root {
+  
+  }
+  
+  body {
+      font-size: .875rem;
+    }
+        .pointer{
+      cursor: pointer;
+    }
+    
+     .font-11{
+      font-size: 11px;
+    }
+    
