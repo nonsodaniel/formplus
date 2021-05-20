@@ -7,6 +7,7 @@ import "./templates.scss";
 
 const Templates = (props) => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
     return props.getTemplates();
   }, []);
@@ -30,21 +31,11 @@ const Templates = (props) => {
       <h5 className="template-header">All Templates</h5>
       <div className="templates">
         {data && data.length > 0 ? (
-          (
-          (
-          data.map(o => {
-                return (
-                  <TemplateList key={o.id} templates={o}/>
-                );
-              })
-        ) 
-        ) 
+          data.map((o) => {
+            return <TemplateList key={o.id} templates={o} />;
+          })
         ) : (
-          
-          
           <p>No Data</p>
-        
-        
         )}
       </div>
     </div>

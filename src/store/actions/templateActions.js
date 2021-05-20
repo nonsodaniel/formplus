@@ -1,4 +1,5 @@
 import { Get } from "../../components/config/apiServices";
+import { UPDATE_TEMP_DATA } from "./types";
 
 import {
   TEMP_DATA,
@@ -27,5 +28,11 @@ export const getTemplates = () => {
       dispatch({ type: TEMP_ERROR, payload: error });
       dispatch({ type: TEMP_STOP_LOADING, payload: false });
     }
+  };
+};
+
+export const updateTemplates = (data) => {
+  return async (dispatch) => {
+    dispatch({ type: UPDATE_TEMP_DATA, payload: data });
   };
 };
