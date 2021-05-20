@@ -1,0 +1,23 @@
+.header-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 4rem 0;
+}
+.sort-row{
+    display: flex;
+}
+.sort-items{
+    margin-right: 1rem;
+}
+.alert-danger {
+    color: #252525;
+    background-color: #FFF4EA;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 3.5rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}

@@ -1,15 +1,37 @@
 :root {
-  
+
+  }
+  *{
+    margin: 0;
+    padding: 0;
+  box-sizing: border-box;
   }
   
   body {
-      font-size: .875rem;
+      font-family:Circular Std;
     }
         .pointer{
       cursor: pointer;
     }
-    
+    .form-tag, .form-tag:focus-visible {
+      display: block;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  
      .font-11{
       font-size: 11px;
     }
     
+    .row{
+      flex-wrap: wrap;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
