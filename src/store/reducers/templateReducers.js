@@ -8,7 +8,7 @@ import {
 
 const INTIAL_STATE = {
   templateData: [],
-  updateTemplateData :[],
+    updateTemplateData :[],
 };
 
 export default (state = INTIAL_STATE, actions) => {

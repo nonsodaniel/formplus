@@ -9,16 +9,11 @@ const Header = (props) => {
   const [defaultData, setdefaultData] = useState([]);
 
   const searchName = () => {
-    console.log(data, searchText);
     if (searchText === "") {
       return data;
     }
-    let search = data.filter((filt) => {
-      if (filt.name.toLowerCase().includes(searchText.toLowerCase())) {
-        return filt;
-      }
-    });
-    console.log(search);
+     let search = data.filter((o) => o["name"].includes(searchText));
+     setData(search);
   };
 
   const handleSearch = (e) => {
@@ -26,13 +21,9 @@ const Header = (props) => {
     searchName();
   };
   const sortCategory = ({ target }) => {
-    //  let data = JSON.parse(localStorage.getItem('data')).splice(0,10)
-    //  props.updateTemplates(data)
-    let filt = data.map((o) => {
-      if (o.category.includes(target.value)) {
-        return o;
-      }
-    });
+    if(target.value === 'All') return data
+    let category = data.filter((o) => o["category"].includes(target.value));
+    setData(category)
   };
   const sortName = ({ target }) => {
     let newData = [];
@@ -95,6 +86,7 @@ const Header = (props) => {
       setdefaultData(response.data.splice(0, 50));
     }
   }, [props.templateData]);
+
   useEffect(() => {
     setData(props.updateTemplateData);
   }, [props.updateTemplateData]);
@@ -104,11 +96,13 @@ const Header = (props) => {
         <div className="search-input">
           <input
             type="text"
-            className="form-tag"
+            className="form-tag search-textbox"
             placeholder="Search templates"
             value={searchText}
             onChange={handleSearch}
           />
+          <span className="search-icon">         <i class="fas fa-search"></i></span>
+
         </div>
         <div className="sort-row">
           <span className="sort-items">Sort By: </span>
@@ -118,9 +112,9 @@ const Header = (props) => {
             onChange={sortCategory}
           >
             <option selected>All</option>
-            <option value="Health">Health</option>
-            <option value="E-commerce">E-commerce</option>
-            <option value="Education">Education</option>
+            <option defaultValue="Health">Health</option>
+            <option defaultValue="E-commerce">E-commerce</option>
+            <option defaultValue="Education">Education</option>
           </select>
           <select
             className="sort-items"
@@ -128,9 +122,9 @@ const Header = (props) => {
             onChange={sortName}
           >
             <option selected>Order</option>
-            <option value="default">Default</option>
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
+            <option defaultValue="default">Default</option>
+            <option defaultValue="asc">Ascending</option>
+            <option defaultValue="desc">Descending</option>
           </select>
           <select
             className="sort-items"
@@ -138,9 +132,9 @@ const Header = (props) => {
             onChange={sortByTime}
           >
             <option selected>Order</option>
-            <option value="1">Default</option>
-            <option value="2">Ascending</option>
-            <option value="3">Descending</option>
+            <option defaultValue="1">Default</option>
+            <option defaultValue="2">Ascending</option>
+            <option defaultValue="3">Descending</option>
           </select>
         </div>
       </div>
@@ -149,7 +143,7 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  console.log('state',state);
   const {
     templateData,
     loading,

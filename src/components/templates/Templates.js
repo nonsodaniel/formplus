@@ -23,9 +23,9 @@ const Templates = (props) => {
     }
   }, [props.templateData]);
 
-  useEffect(() => {
-    // console.log("props error", props.errorMessage);
-  }, [props.errorMessage]);
+  // useEffect(() => {
+  //   // console.log("props error", props.errorMessage);
+  // }, [props.errorMessage]);
   return (
     <div className="wrap">
       <h5 className="template-header">All Templates</h5>

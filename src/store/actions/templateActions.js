@@ -7,7 +7,7 @@ import {
   TEMP_START_LOADING,
   TEMP_STOP_LOADING,
 } from "./types";
-let cors = `https://cors-anywhere.herokuapp.com/`;
+// let cors = `https://cors-anywhere.herokuapp.com/`;
 let url = `https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates`;
 
 export const getTemplates = () => {
@@ -23,6 +23,7 @@ export const getTemplates = () => {
       if (status === 200) {
         dispatch({ type: TEMP_DATA, payload: response });
         dispatch({ type: TEMP_STOP_LOADING, payload: false });
+        console.log("indexDataByKey", indexDataByKey(response.data, "name"));
       }
     } catch (error) {
       dispatch({ type: TEMP_ERROR, payload: error });
@@ -31,8 +32,17 @@ export const getTemplates = () => {
   };
 };
 
+const indexDataByKey = (data, key) => {
+  data = data || [];
+  console.log("indexed data", data);
+  return data.reduce((output, curr) => {
+    const indexKey = curr[key];
+    if (!output[indexKey]) output[indexKey] = [];
+    output[key].push(curr);
+    return output;
+  }, {});
+};
+
 export const updateTemplates = (data) => {
-  return async (dispatch) => {
-    dispatch({ type: UPDATE_TEMP_DATA, payload: data });
-  };
+    return { type: UPDATE_TEMP_DATA, payload: data };
 };
