@@ -4,92 +4,18 @@ import * as actions from "../../store/actions/templateActions";
 import "./layout.css";
 
 const Header = (props) => {
-  const [searchText, setSearchText] = useState("");
-  const [data, setData] = useState([]);
-  const [defaultData, setdefaultData] = useState([]);
-
-  const searchName = () => {
-    if (searchText === "") {
-      return data;
-    }
-     let search = data.filter((o) => o["name"].includes(searchText));
-     setData(search);
-  };
-
   const handleSearch = (e) => {
-    setSearchText(e.target.value);
-    searchName();
+    props.handleSearchTemplates(e.target.value);
   };
-  const sortCategory = ({ target }) => {
-    if(target.value === 'All') return data
-    let category = data.filter((o) => o["category"].includes(target.value));
-    setData(category)
+  const sortCategory = ({   target   }) => {
+     console.log(target.value)
+    props.handleSortCategory(target.value);
   };
-  const sortName = ({ target }) => {
-    let newData = [];
-    // console.log(target.value, data);
-    if (target.value === "asc") {
-      newData = data.sort((a, b) => {
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-          return -1;
-        }
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      });
-      props.updateTemplates(newData);
-      setData(newData);
-    } else if (target.value === "desc") {
-      newData = data.sort((a, b) => {
-        if (a.name.toLowerCase() > b.name.toLowerCase()) {
-          return -1;
-        }
-        if (a.name.toLowerCase() < b.name.toLowerCase()) {
-          return 1;
-        }
-        return 0;
-      });
-      props.updateTemplates(newData);
-      setData(newData);
-    } else {
-      setData(defaultData);
-    }
-  };
-  const sortByTime = ({ target }) => {
-    let newData = [];
-    if (target.value === "asc") {
-      newData = data.sort((x, y) => {
-        return x.created - y.created;
-      });
-      setData(newData);
-    } else if (target.value === "desc") {
-      newData = data.sort((x, y) => {
-        return y.created - x.created;
-      });
-      setData(newData);
-    } else {
-      setData(defaultData);
-    }
-    console.log(data);
-  };
+  const sortAlphabetically = ({   target   }) => {
+    console.log(target.value)
+   props.handleSortAlphabet(target.value);
+ };
 
-  useEffect(() => {
-    let response = props.templateData;
-    if (
-      response &&
-      response["status"] !== null &&
-      response["status"] === 200 &&
-      response["data"].length > 0
-    ) {
-      setData(response.data.splice(0, 50));
-      setdefaultData(response.data.splice(0, 50));
-    }
-  }, [props.templateData]);
-
-  useEffect(() => {
-    setData(props.updateTemplateData);
-  }, [props.updateTemplateData]);
   return (
     <header>
       <div className="header-wrap">
@@ -98,11 +24,13 @@ const Header = (props) => {
             type="text"
             className="form-tag search-textbox"
             placeholder="Search templates"
-            value={searchText}
+            value={props.searchValue}
             onChange={handleSearch}
           />
-          <span className="search-icon">         <i class="fas fa-search"></i></span>
-
+          <span className="search-icon">
+            {" "}
+            <i class="fas fa-search"></i>
+          </span>
         </div>
         <div className="sort-row">
           <span className="sort-items">Sort By: </span>
@@ -119,7 +47,7 @@ const Header = (props) => {
           <select
             className="sort-items"
             aria-label="select"
-            onChange={sortName}
+            onChange={sortAlphabetically}
           >
             <option selected>Order</option>
             <option defaultValue="default">Default</option>
@@ -129,7 +57,7 @@ const Header = (props) => {
           <select
             className="sort-items"
             aria-label="select"
-            onChange={sortByTime}
+            onChange={() => {}}
           >
             <option selected>Order</option>
             <option defaultValue="1">Default</option>
@@ -143,18 +71,12 @@ const Header = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('state',state);
-  const {
-    templateData,
-    loading,
-    errorMessage,
-    updateTemplateData,
-  } = state.templates;
+  console.log('state',state)
+  const { templates, loading, searchValue } = state.templates;
   return {
-    templateData,
+    templates,
     loading,
-    errorMessage,
-    updateTemplateData,
+    searchValue,
   };
 };
 export default connect(mapStateToProps, actions)(Header);

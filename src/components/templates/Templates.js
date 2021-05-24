@@ -1,41 +1,30 @@
-import React, { useEffect, useState } from "react";
-// import { withRouter } from "react-router-dom";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/templateActions";
 import TemplateList from "./TemplateList";
 import "./templates.scss";
 
 const Templates = (props) => {
-  const [data, setData] = useState([]);
 
   useEffect(() => {
-    return props.getTemplates();
+    props.getTemplates();
   }, []);
-  useEffect(() => {
-    let response = props.templateData;
-    if (
-      response &&
-      response["status"] !== null &&
-      response["status"] === 200 &&
-      response["data"].length > 0
-    ) {
-      setData(response["data"].splice(0, 50));
-    }
-  }, [props.templateData]);
 
-  // useEffect(() => {
-  //   // console.log("props error", props.errorMessage);
-  // }, [props.errorMessage]);
+  
   return (
     <div className="wrap">
       <h5 className="template-header">All Templates</h5>
       <div className="templates">
-        {data && data.length > 0 ? (
-          data.map((o) => {
-            return <TemplateList key={o.id} templates={o} />;
-          })
+        {!props.loading ? (
+          props.data && props.data.length > 0 ? (
+            props.data.map((o) => {
+              return <TemplateList key={o.id} templates={o} />;
+            })
+          ) : (
+            <p>No Data</p>
+          )
         ) : (
-          <p>No Data</p>
+          <p>Loading...</p>
         )}
       </div>
     </div>
@@ -43,11 +32,14 @@ const Templates = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { templateData, loading, errorMessage, error } = state.templates;
+  const { data, loading, errorMessage, error } = state.templates;
+  console.log(loading, data)
   return {
-    templateData,
+    data,
+    error,
     loading,
     errorMessage,
   };
 };
+
 export default connect(mapStateToProps, actions)(Templates);
