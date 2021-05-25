@@ -5,6 +5,7 @@ import {
   TEMPLATES_FETCH_FAILED,
   SEARCH_TEMPLATES,
   SORT_CATEGORY,
+  SORT_DATE,
 } from "../actions/types";
 
 const INTIAL_STATE = {
@@ -73,29 +74,50 @@ export default (state = INTIAL_STATE, actions) => {
       };
     case SORT_ALPHABET:
       const { activeOrder } = actions.payload;
-      let sortAlphabet =
+      let sortAlphabetData =
         activeOrder === "default"
           ? state.allTemplates
           : activeOrder === "asc"
-          ?  [...state.allTemplates].sort((a, b) => a.name.localeCompare(b.name))
+          ? [...state.allTemplates].sort((a, b) => a.name.localeCompare(b.name))
           : activeOrder === "desc"
           ? [...state.allTemplates].sort((a, b) => b.name.localeCompare(a.name))
+          : null;
+          return {
+            ...state,
+            search: false,
+            currentPage: 1,
+            searchValue: "",
+            activeOrder: activeOrder,
+            data: paginate(sortAlphabetData, 1, state.pageLength),
+          };
+    case SORT_DATE:
+      const { activeDate } = actions.payload;
+      let sortDateData =
+        activeDate === "default"
+          ? state.allTemplates
+          : activeDate === "asc"
+          ? [...state.allTemplates].sort((a, b) =>
+              a.created.localeCompare(b.created)
+            )
+          : activeDate === "desc"
+          ? [...state.allTemplates].sort((a, b) =>
+              b.created.localeCompare(a.created)
+            )
           : null;
       return {
         ...state,
         search: false,
         currentPage: 1,
         searchValue: "",
-        activeOrder: activeOrder,
-        data: paginate(sortAlphabet, 1, state.pageLength),
+        activeOrder: activeDate,
+        data: paginate(sortDateData, 1, state.pageLength),
       };
-
     default:
       return { ...state };
   }
 };
 
-function paginate(arr, currentPage, pagelength) {
+const paginate = (arr, currentPage, pagelength) => {
   return arr.slice((currentPage - 1) * pagelength, pagelength * currentPage);
-}
+};
 

@@ -15,6 +15,9 @@ const Header = (props) => {
     console.log(target.value)
    props.handleSortAlphabet(target.value);
  };
+ const sortDate = ({ target }) => {
+   props.handleSortDate(target.value);
+ };
 
   return (
     <header>
@@ -57,12 +60,12 @@ const Header = (props) => {
           <select
             className="sort-items"
             aria-label="select"
-            onChange={() => {}}
+            onChange={sortDate}
           >
-            <option selected>Order</option>
-            <option value="1">Default</option>
-            <option value="2">Ascending</option>
-            <option value="3">Descending</option>
+            <option selected>Date</option>
+            <option value="default">Default</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
           </select>
         </div>
       </div>

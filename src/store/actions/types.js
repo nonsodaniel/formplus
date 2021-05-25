@@ -4,6 +4,10 @@ export const TEMPLATES_FETCH_FAILED = "TEMPLATES_FETCH_FAILED";
 export const SEARCH_TEMPLATES = "SEARCH_TEMPLATES";
 export const SORT_CATEGORY = "SORT_CATEGORY";
 export const SORT_ALPHABET = "SORT_ALPHABET";
+export const SORT_DATE = "SORT_DATE";
+
+
+
 
 
 
