@@ -44,59 +44,51 @@ export default (state = INTIAL_STATE, actions) => {
       };
     case SEARCH_TEMPLATES:
       const { searchValue } = actions.payload;
-      let searchData = searchValue === '' ? state.allTemplates 
-      : state.allTemplates.filter(({ name }) => name.includes(searchValue))
+      let searchData =
+        searchValue === ""
+          ? state.allTemplates
+          : state.allTemplates.filter(({ name }) => name.includes(searchValue));
       return {
         ...state,
         search: true,
         currentPage: 1,
         searchValue: searchValue,
-        data: paginate(searchData,  1, state.pageLength
-        ),
+        data: paginate(searchData, 1, state.pageLength),
       };
-      case SORT_CATEGORY:
-        const { activeCategory } = actions.payload;
-      let sortData = activeCategory === "All" ? state.allTemplates 
-      : state.allTemplates.filter(({ category }) => category.includes(activeCategory))
-        return {
-          ...state,
-          search: false,
-          currentPage: 1,
-          searchValue: '',
-          activeCategory: activeCategory,
-          data:  paginate(sortData ,1,state.pageLength),
-        };
-        case SORT_ALPHABET:
-            const { activeOrder } = actions.payload;
-         return    console.log(state.allTemplates.sort(({a, b}) => console.log(a, b)))
-            // return state.allTemplates.sort((a, b) => b.name.localeCompare(a.name))
-          let sortAlphabet = activeOrder === "Default" ? state.allTemplates 
-          : activeOrder === 'asc' ? state.allTemplates.sort((a, b) => a.name.localeCompare(b.name)) 
-          :  activeOrder === 'desc' ? state.allTemplates.sort((a, b) => b.name.localeCompare(a.name)) : null
-        //   state.allTemplates.filter(({ order }) => order.includes(activeOrder))
-            return {
-              ...state,
-              search: false,
-              currentPage: 1,
-              searchValue: '',
-              activeOrder: activeOrder,
-              data:  paginate(sortAlphabet ,1,state.pageLength),
-            };
-            
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
+    case SORT_CATEGORY:
+      const { activeCategory } = actions.payload;
+      let sortData =
+        activeCategory === "All"
+          ? state.allTemplates
+          : state.allTemplates.filter(({ category }) =>
+              category.includes(activeCategory)
+            );
+      return {
+        ...state,
+        search: false,
+        currentPage: 1,
+        searchValue: "",
+        activeCategory: activeCategory,
+        data: paginate(sortData, 1, state.pageLength),
+      };
+    case SORT_ALPHABET:
+      const { activeOrder } = actions.payload;
+      let sortAlphabet =
+        activeOrder === "default"
+          ? state.allTemplates
+          : activeOrder === "asc"
+          ?  [...state.allTemplates].sort((a, b) => a.name.localeCompare(b.name))
+          : activeOrder === "desc"
+          ? [...state.allTemplates].sort((a, b) => b.name.localeCompare(a.name))
+          : null;
+      return {
+        ...state,
+        search: false,
+        currentPage: 1,
+        searchValue: "",
+        activeOrder: activeOrder,
+        data: paginate(sortAlphabet, 1, state.pageLength),
+      };
 
     default:
       return { ...state };

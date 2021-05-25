@@ -40,19 +40,19 @@ const Header = (props) => {
             onChange={sortCategory}
           >
             <option selected>All</option>
-            <option defaultValue="Health">Health</option>
-            <option defaultValue="E-commerce">E-commerce</option>
-            <option defaultValue="Education">Education</option>
+            <option value="Health">Health</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="Education">Education</option>
           </select>
           <select
             className="sort-items"
             aria-label="select"
             onChange={sortAlphabetically}
           >
-            <option selected>Order</option>
-            <option defaultValue="default">Default</option>
-            <option defaultValue="asc">Ascending</option>
-            <option defaultValue="desc">Descending</option>
+            <option selected>Alphabet</option>
+            <option value="default">Default</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
           </select>
           <select
             className="sort-items"
@@ -60,9 +60,9 @@ const Header = (props) => {
             onChange={() => {}}
           >
             <option selected>Order</option>
-            <option defaultValue="1">Default</option>
-            <option defaultValue="2">Ascending</option>
-            <option defaultValue="3">Descending</option>
+            <option value="1">Default</option>
+            <option value="2">Ascending</option>
+            <option value="3">Descending</option>
           </select>
         </div>
       </div>
