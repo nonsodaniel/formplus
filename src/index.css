@@ -1,13 +1,8 @@
-/* @font-face{
-  font-family: Circular Std;
-  font-style: normal;
-  font-weight: 500;
-  src: url("./components/assets/Circular\ Std\ Font.otf");
-} */
-
 :root {
-  /* --text-desc: font; */
+  --small-text: 13px;
   }
+
+  
   *{
     margin: 0;
     padding: 0;
@@ -19,20 +14,12 @@
   body {
       font-family:Circular Std;
     }
-        .pointer{
+      .pointer{
       cursor: pointer;
     }
     .form-tag, .form-tag:focus-visible {
-      display: block;
-      padding: .375rem .75rem;
-      font-size: 1rem;
       line-height: 1.5;
-      color: #495057;
-      background-color: #fff;
-      background-clip: padding-box;
-      border: 1px solid #ced4da;
-      border-radius: .25rem;
-      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+      border: 0.5px solid #BDBDBD;
   }
   
      .font-11{
@@ -49,5 +36,7 @@
     border-radius: .428rem;
     box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);
 }
-
+.text-center{
+  text-align: center;
+}
 

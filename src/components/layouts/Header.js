@@ -33,9 +33,10 @@ const Header = (props) => {
           </span>
         </div>
         <div className="sort-row">
-          <span className="sort-items">Sort By: </span>
+          <span className="sort-items sort-title">Sort By: </span>
+          <div className="select-wrap sort-items">
           <select
-            className="sort-items"
+            className="select-item"
             aria-label="select"
             onChange={sortCategory}
           >
@@ -44,8 +45,10 @@ const Header = (props) => {
             <option value="E-commerce">E-commerce</option>
             <option value="Education">Education</option>
           </select>
-          <select
-            className="sort-items"
+          </div>
+       <div className="select-wrap sort-items">
+       <select
+               className="select-item"
             aria-label="select"
             onChange={sortAlphabetically}
           >
@@ -54,8 +57,10 @@ const Header = (props) => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
-          <select
-            className="sort-items"
+       </div>
+      <div className="select-wrap sort-items">
+      <select
+               className="select-item"
             aria-label="select"
             onChange={sortDate}
           >
@@ -64,6 +69,8 @@ const Header = (props) => {
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
+      </div>
+      
         </div>
       </div>
     </header>

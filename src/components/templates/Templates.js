@@ -5,12 +5,10 @@ import TemplateList from "./TemplateList";
 import "./templates.scss";
 
 const Templates = (props) => {
-
   useEffect(() => {
     props.getTemplates();
   }, [props.getTemplates]);
 
-  
   return (
     <div className="wrap">
       <h5 className="template-header">
@@ -18,25 +16,22 @@ const Templates = (props) => {
       </h5>
       <div className="templates">
         {!props.loading ? (
+
           props.pageData && props.pageData.length > 0 ? (
-            props.pageData.map((o) => {
+            props.pageData.map((template) => {
               return (
-                (
                 <TemplateList
-   
-                                key={Math.floor(Math.random() * Date.now())}
-      
-                             templates={o}
-          
-                     />
-              )
+                  key={Math.floor(Math.random() * Date.now())}
+                  templates={template}
+                />
               );
             })
           ) : (
-            <p>No Data</p>
+            <p className="text-center">No Data</p>
           )
-        ) : (
-          <p>Loading...</p>
+        ) 
+        : (
+          <p className="text-center">Loading...</p>
         )}
       </div>
     </div>

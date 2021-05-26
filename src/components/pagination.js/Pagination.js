@@ -12,33 +12,35 @@ const Pagination = (props) => {
   };
   return (
     <div className="pagination">
-      <div className="pagination-wrap">
-       
-        <button className="pagination-text pointer" 
-        disabled={  props.currentPage  === 1}
-        onClick={prevBtn}>
-          
-          Previous
-        
-        </button>
-        <span>
-          <button className="page-btn">{props.currentPage}</button> of {props.totalPages}{" "}
-        </span>
-        <button className="pagination-text"
-        disabled={props.currentPage === props.totalpages}
-        onClick={nextBtn}>
-          
-          Next
-        
-        </button>
-      </div>
+      {
+        props.allTemplates.length > 0 && (
+          <div className="pagination-wrap">
+          <button className="pagination-text pointer" 
+          disabled={  props.currentPage  === 1}
+          onClick={prevBtn}>
+            Previous
+          </button>
+          <span>
+            <button className="page-btn">{props.currentPage}</button> of {props.totalPages}{" "}
+          </span>
+          <button className="pagination-text pointer"
+          disabled={props.currentPage === props.totalpages}
+          onClick={nextBtn}>
+            Next
+          </button>
+        </div>
+        )
+      }
+   
     </div>
   );
 };
 
 const mapStateToProps = (state) => {
-  const { currentPage, totalPages } = state.templates;
+  console.log('tem', state)
+  const { currentPage, totalPages, allTemplates } = state.templates;
   return {
+    allTemplates,
     currentPage,
     totalPages,
   };

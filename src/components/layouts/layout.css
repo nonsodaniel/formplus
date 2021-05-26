@@ -1,16 +1,27 @@
+@import '../../index.css';
+
 .header-wrap{
     display: flex;
     justify-content: space-between;
     padding: 4rem 0;
 }
 .search-input{
+    width: 20rem;
     position: relative;
 }
 .search-icon{
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     color: grey;
+}
+.search-textbox{
+    width: inherit;
+    font-size: 13px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 29px;
+    padding-right: 50px;
 }
 
 select{display: block;
@@ -37,6 +48,18 @@ select{display: block;
 .sort-items{
     margin-right: 1rem;
 }
+.sort-items:last-child{
+    margin-right: 0;
+}
+.sort-title{
+    height: 37px;
+    line-height: 37px;
+    font-size: 13px;
+    color: #989898;
+}
+.select-item{
+    font-size: 13px;
+}
 .alert-danger {
     color: #252525;
     background-color: #FFF4EA;
@@ -51,6 +74,13 @@ select{display: block;
     font-size: 12px;
     text-align: center;
 }
+.alert-text {
+    display: inline;
+}
+.alert-icon{
+    margin-bottom: -5px;
+    margin-right: 15px;
+}
 .footer{
     margin-bottom: 1rem;
 }
@@ -58,6 +88,12 @@ select{display: block;
     .header-wrap {
        flex-direction: column;
        margin: 1rem auto 1rem auto;
+    }
+    .search-input{
+        width: 100%;
+    }
+    .search-icon{
+        top: 27px
     }
     .form-tag{
         margin: 1rem auto;
@@ -68,6 +104,11 @@ select{display: block;
     }
     .sort-items{
         margin-bottom: 1rem;
+        margin-right: 0;
+    }
+    .alert-text {
+        display: block;
+        margin-top: 15px;
     }
     .templates {
         display: grid;
