@@ -6,6 +6,8 @@ import {
   SEARCH_TEMPLATES,
   SORT_CATEGORY,
   SORT_DATE,
+  PREV_PAGE,
+  NEXT_PAGE
 } from "../actions/types";
 
 const INTIAL_STATE = {
@@ -18,10 +20,11 @@ const INTIAL_STATE = {
   search: true,
   totalPages: 1,
   currentPage: 1,
-  pageLength: 50,
+  pageLength: 15,
+  pageData: []
 };
 
-export default (state = INTIAL_STATE, actions) => {
+export  const reducer = (state = INTIAL_STATE, actions) => {
   switch (actions.type) {
     case START_FETCH_TEMPLATES:
       return { ...state, loading: true };
@@ -33,8 +36,9 @@ export default (state = INTIAL_STATE, actions) => {
         loading: false,
         errorMessage: "",
         allTemplates: data,
+        data: data,
         totalPages: Math.ceil(data.length / state.pageLength),
-        data: paginate(data, state.currentPage, state.pageLength),
+        pageData: paginate(data, state.currentPage, state.pageLength),
       };
     case TEMPLATES_FETCH_FAILED:
       return {
@@ -54,11 +58,13 @@ export default (state = INTIAL_STATE, actions) => {
         search: true,
         currentPage: 1,
         searchValue: searchValue,
-        data: paginate(searchData, 1, state.pageLength),
+        totalPages: Math.ceil(searchData.length / state.pageLength),
+        data: searchData,
+        pageData: paginate(searchData, 1, state.pageLength),
       };
     case SORT_CATEGORY:
       const { activeCategory } = actions.payload;
-      let sortData =
+      let sortCatData =
         activeCategory === "All"
           ? state.allTemplates
           : state.allTemplates.filter(({ category }) =>
@@ -69,8 +75,10 @@ export default (state = INTIAL_STATE, actions) => {
         search: false,
         currentPage: 1,
         searchValue: "",
+        data: sortCatData,
+        totalPages: Math.ceil(sortCatData.length / state.pageLength),
         activeCategory: activeCategory,
-        data: paginate(sortData, 1, state.pageLength),
+        pageData: paginate(sortCatData, 1, state.pageLength),
       };
     case SORT_ALPHABET:
       const { activeOrder } = actions.payload;
@@ -87,8 +95,9 @@ export default (state = INTIAL_STATE, actions) => {
             search: false,
             currentPage: 1,
             searchValue: "",
+            data: sortAlphabetData,
             activeOrder: activeOrder,
-            data: paginate(sortAlphabetData, 1, state.pageLength),
+            pageData: paginate(sortAlphabetData, 1, state.pageLength),
           };
     case SORT_DATE:
       const { activeDate } = actions.payload;
@@ -107,12 +116,29 @@ export default (state = INTIAL_STATE, actions) => {
       return {
         ...state,
         search: false,
-        currentPage: 1,
+        currentPage: 1 ,
         searchValue: "",
+        data: sortDateData,
         activeOrder: activeDate,
-        data: paginate(sortDateData, 1, state.pageLength),
+        pageData: paginate(sortDateData, 1, state.pageLength),
       };
-    default:
+
+      case PREV_PAGE:
+        let prevPage = state.currentPage - 1
+        return {
+          ...state,
+          currentPage: prevPage,
+          pageData: paginate(state.data, prevPage, state.pageLength),
+        };
+   
+      case NEXT_PAGE:
+          let nextPage = state.currentPage + 1
+        return {
+          ...state,
+          currentPage: nextPage,
+          pageData: paginate(state.data, nextPage, state.pageLength),
+        };
+      default:
       return { ...state };
   }
 };
@@ -121,3 +147,4 @@ const paginate = (arr, currentPage, pagelength) => {
   return arr.slice((currentPage - 1) * pagelength, pagelength * currentPage);
 };
 
+export default reducer;

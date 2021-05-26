@@ -8,7 +8,7 @@ const Templates = (props) => {
 
   useEffect(() => {
     props.getTemplates();
-  }, []);
+  }, [props.getTemplates]);
 
   
   return (
@@ -16,8 +16,8 @@ const Templates = (props) => {
       <h5 className="template-header">All Templates</h5>
       <div className="templates">
         {!props.loading ? (
-          props.data && props.data.length > 0 ? (
-            props.data.map((o) => {
+          props.pageData && props.pageData.length > 0 ? (
+            props.pageData.map((o) => {
               return <TemplateList key={o.id} templates={o} />;
             })
           ) : (
@@ -32,13 +32,11 @@ const Templates = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { data, loading, errorMessage, error } = state.templates;
-  console.log(loading, data)
+  const { pageData, loading } = state.templates;
+  console.log(loading, pageData);
   return {
-    data,
-    error,
+    pageData,
     loading,
-    errorMessage,
   };
 };
 

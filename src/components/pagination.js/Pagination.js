@@ -1,18 +1,49 @@
-import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/templateActions";
 import "./pagination.scss";
 
-const Pagination = () => {
+const Pagination = (props) => {
+  const prevBtn = () => {
+    props.handlePrevBtn()
+
+  };
+  const nextBtn = () => {
+    props.handleNextBtn()
+  };
   return (
     <div className="pagination">
       <div className="pagination-wrap">
-        <h6 className="pagination-text">Previous</h6>
+       
+        <button className="pagination-text pointer" 
+        disabled={  props.currentPage  === 1}
+        onClick={prevBtn}>
+          
+          Previous
+        
+        </button>
         <span>
-          <button className="page-btn">1</button> of 14{" "}
+          <button className="page-btn">{props.currentPage}</button> of {props.totalPages}{" "}
         </span>
-        <h6 className="pagination-text">Next</h6>
+        <button className="pagination-text"
+        disabled={props.currentPage === props.totalpages}
+        onClick={nextBtn}>
+          
+          Next
+        
+        </button>
       </div>
     </div>
   );
 };
 
-export default Pagination;
+const mapStateToProps = (state) => {
+  console.log('state',state)
+  const { templates, loading, searchValue, currentPage, totalPages } = state.templates;
+  return {
+    templates,
+    loading,
+    searchValue,
+    currentPage, totalPages
+  };
+};
+export default connect(mapStateToProps, actions)(Pagination);

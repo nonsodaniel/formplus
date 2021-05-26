@@ -1,5 +1,5 @@
 import { Get } from "../../components/config/apiServices";
-import { SORT_DATE } from "./types";
+
 
 import {
   START_FETCH_TEMPLATES,
@@ -7,7 +7,10 @@ import {
   TEMPLATES_FETCH_FAILED,
   SEARCH_TEMPLATES,
   SORT_CATEGORY,
+  SORT_DATE,
   SORT_ALPHABET,
+  NEXT_PAGE,
+  PREV_PAGE,
 } from "./types";
 // https://cors-anywhere.herokuapp.com/
 let url = `https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates`;
@@ -65,6 +68,20 @@ export const handleSortCategory = (activeCategory) => {
       dispatch({
         type: SORT_DATE,
         payload: { activeDate },
+      });
+    };
+  };
+  export const handlePrevBtn = () => {
+    return (dispatch) => {
+      dispatch({
+        type: PREV_PAGE,
+      });
+    };
+  };
+  export const handleNextBtn = () => {
+    return (dispatch) => {
+      dispatch({
+        type: NEXT_PAGE,
       });
     };
   };

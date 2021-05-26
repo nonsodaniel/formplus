@@ -5,6 +5,8 @@ export const SEARCH_TEMPLATES = "SEARCH_TEMPLATES";
 export const SORT_CATEGORY = "SORT_CATEGORY";
 export const SORT_ALPHABET = "SORT_ALPHABET";
 export const SORT_DATE = "SORT_DATE";
+export const PREV_PAGE = "PREV_PAGE";
+export const NEXT_PAGE = "NEXT_PAGE";
 
 
 
