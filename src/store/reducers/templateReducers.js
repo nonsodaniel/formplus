@@ -21,7 +21,8 @@ const INTIAL_STATE = {
   totalPages: 1,
   currentPage: 1,
   pageLength: 15,
-  pageData: []
+  pageData: [],
+  currentCategory: "All",
 };
 
 export  const reducer = (state = INTIAL_STATE, actions) => {
@@ -78,6 +79,7 @@ export  const reducer = (state = INTIAL_STATE, actions) => {
         data: sortCatData,
         totalPages: Math.ceil(sortCatData.length / state.pageLength),
         activeCategory: activeCategory,
+        currentCategory: activeCategory,
         pageData: paginate(sortCatData, 1, state.pageLength),
       };
     case SORT_ALPHABET:

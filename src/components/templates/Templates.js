@@ -13,12 +13,24 @@ const Templates = (props) => {
   
   return (
     <div className="wrap">
-      <h5 className="template-header">All Templates</h5>
+      <h5 className="template-header">
+        {props && props.currentCategory} Templates
+      </h5>
       <div className="templates">
         {!props.loading ? (
           props.pageData && props.pageData.length > 0 ? (
             props.pageData.map((o) => {
-              return <TemplateList key={o.id} templates={o} />;
+              return (
+                (
+                <TemplateList
+   
+                                key={Math.floor(Math.random() * Date.now())}
+      
+                             templates={o}
+          
+                     />
+              )
+              );
             })
           ) : (
             <p>No Data</p>
@@ -32,11 +44,11 @@ const Templates = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  const { pageData, loading } = state.templates;
-  console.log(loading, pageData);
+  const { pageData, loading, currentCategory } = state.templates;
   return {
     pageData,
     loading,
+    currentCategory,
   };
 };
 

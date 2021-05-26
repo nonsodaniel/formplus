@@ -37,13 +37,10 @@ const Pagination = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('state',state)
-  const { templates, loading, searchValue, currentPage, totalPages } = state.templates;
+  const { currentPage, totalPages } = state.templates;
   return {
-    templates,
-    loading,
-    searchValue,
-    currentPage, totalPages
+    currentPage,
+    totalPages,
   };
 };
 export default connect(mapStateToProps, actions)(Pagination);

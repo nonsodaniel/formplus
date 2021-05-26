@@ -39,7 +39,7 @@ const Header = (props) => {
             aria-label="select"
             onChange={sortCategory}
           >
-            <option defaultValue>All</option>
+            <option defaultValue="All">All</option>
             <option value="Health">Health</option>
             <option value="E-commerce">E-commerce</option>
             <option value="Education">Education</option>

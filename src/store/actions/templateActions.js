@@ -1,6 +1,5 @@
 import { Get } from "../../components/config/apiServices";
 
-
 import {
   START_FETCH_TEMPLATES,
   SET_TEMPLATES_DATA,
