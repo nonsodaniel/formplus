@@ -17,7 +17,7 @@
 }
 .search-textbox{
     width: inherit;
-    font-size: 13px;
+    font-size: var(--small-text);
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 29px;
@@ -54,11 +54,11 @@ select{display: block;
 .sort-title{
     height: 37px;
     line-height: 37px;
-    font-size: 13px;
+    font-size: var(--small-text);
     color: #989898;
 }
 .select-item{
-    font-size: 13px;
+    font-size: var(--small-text);
 }
 .alert-danger {
     color: #252525;
