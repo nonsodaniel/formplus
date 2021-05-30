@@ -11,27 +11,31 @@ const Pagination = (props) => {
     props.handleNextBtn()
   };
   return (
-    <div className="pagination">
-      {
-        props.allTemplates.length > 0 && (
-          <div className="pagination-wrap">
-          <button className="pagination-text pointer" 
-          disabled={  props.currentPage  === 1}
-          onClick={prevBtn}>
+    <div className="pagination" data-testid="pagination">
+      {props.allTemplates.length > 0 && (
+        <div className="pagination-wrap">
+          <button
+            className="pagination-text pointer"
+            data-testid="btn-prev"
+            disabled={props.currentPage === 1}
+            onClick={prevBtn}
+          >
             Previous
           </button>
           <span>
-            <button className="page-btn">{props.currentPage}</button> of {props.totalPages}{" "}
+            <button className="page-btn">{props.currentPage}</button> of{" "}
+            {props.totalPages}{" "}
           </span>
-          <button className="pagination-text pointer"
-          disabled={props.currentPage === props.totalpages}
-          onClick={nextBtn}>
+          <button
+            className="pagination-text pointer"
+            data-testid="btn-next"
+            disabled={props.currentPage === props.totalpages}
+            onClick={nextBtn}
+          >
             Next
           </button>
         </div>
-        )
-      }
-   
+      )}
     </div>
   );
 };
