@@ -37,7 +37,6 @@ const Pagination = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log('tem', state)
   const { currentPage, totalPages, allTemplates } = state.templates;
   return {
     allTemplates,

@@ -1,7 +1,6 @@
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
 import store from "../../store/store";
 import { Provider } from "react-redux";
-import AlertBar from "./AlertBar";
 import "@testing-library/jest-dom/extend-expect";
 import Footer from "./Footer";
 

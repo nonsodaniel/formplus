@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 const TemplateList = ({ templates }) => {
   const { name, description, link, created } = templates;
   return (
@@ -18,6 +19,15 @@ const TemplateList = ({ templates }) => {
       </div>
     </div>
   );
+};
+
+TemplateList.propTypes = {
+  templates: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    created: PropTypes.string.isRequired,
+  }),
 };
 
 export default TemplateList;

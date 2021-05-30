@@ -3,6 +3,7 @@ import "../../components/layouts/layout.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
+
 const Header = (props) => {
   const dispatch = useDispatch();
   const select = useSelector((state) => state);
@@ -22,6 +23,7 @@ const Header = (props) => {
 
   return (
     <header className="header" data-testid="header">
+      <form action="">
       <div className="header-wrap">
         <div className="search-input">
           <input
@@ -89,7 +91,10 @@ const Header = (props) => {
           </div>
         </div>
       </div>
+      </form>
+   
     </header>
   );
 };
+
 export default Header;
