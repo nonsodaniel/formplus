@@ -2,7 +2,6 @@
   --small-text: 13px;
   }
 
-  
   *{
     margin: 0;
     padding: 0;
@@ -49,7 +48,7 @@ input[type=text] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
+   border: 0.5px solid #BDBDBD;;
 }
 
 /* Remove Zooming on Iphone */

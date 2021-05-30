@@ -3,6 +3,7 @@ import "../../components/layouts/layout.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
+import "./header.scss";
 
 const Header = (props) => {
   const dispatch = useDispatch();
