@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import * as actions from "../../store/actions/templateActions";
 import "../../components/layouts/layout.css";
 import { useDispatch } from "react-redux";
@@ -10,32 +9,30 @@ const Header = (props) => {
 
   const handleSearch = ({ target }) => {
     dispatch(actions.handleSearchTemplates(target.value));
-    // props.handleSearchTemplates(e.target.value);
   };
   const sortCategory = ({ target }) => {
     dispatch(actions.handleSortCategory(target.value));
-    // props.handleSortCategory(target.value);
   };
   const sortAlphabetically = ({ target }) => {
     dispatch(actions.handleSortAlphabet(target.value));
-    // props.handleSortAlphabet(target.value);
   };
   const sortDate = ({ target }) => {
     dispatch(actions.handleSortDate(target.value));
-    // props.handleSortDate(target.value);
   };
 
   return (
-    <header className="header" data-test="header">
+    <header className="header" data-testid="header">
       <div className="header-wrap">
         <div className="search-input">
           <input
             type="text"
             className="form-tag search-textbox"
-            data-test="search-field"
+            data-testid="search-textfield"
+            aria-label="search-textfield"
             placeholder="Search templates"
             value={props.searchValue}
             onChange={handleSearch}
+
           />
           <span className="search-icon">
             {" "}
@@ -52,7 +49,7 @@ const Header = (props) => {
               className="select-item"
               aria-label="select"
               onChange={sortCategory}
-              data-test="sort-category"
+              data-testid="sort-category"
             >
               <option defaultValue="All">All</option>
               <option value="Health">Health</option>
@@ -68,7 +65,7 @@ const Header = (props) => {
               className="select-item"
               aria-label="select"
               onChange={sortAlphabetically}
-              data-test="sort-order"
+              data-testid="sort-order"
             >
               <option value="default">Default</option>
               <option value="asc">Ascending</option>
@@ -83,7 +80,7 @@ const Header = (props) => {
               className="select-item"
               aria-label="select"
               onChange={sortDate}
-              data-test="sort-date"
+              data-testid="sort-date"
             >
               <option value="default">Default</option>
               <option value="asc">Ascending</option>
@@ -95,13 +92,4 @@ const Header = (props) => {
     </header>
   );
 };
-
-// const mapStateToProps = (state) => {
-//   const { templates, loading, searchValue } = state.templates || {};
-//   return {
-//     templates,
-//     loading,
-//     searchValue,
-//   };
-// };
 export default Header;

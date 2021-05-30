@@ -1,40 +1,22 @@
-import { shallow } from "enzyme";
-import Header from "./Header";
 
-import configureMockStore from "redux-mock-store";
-import thunk from "redux-thunk";
+import Header from "./Header";
+import { render, cleanup, screen, fireEvent } from "@testing-library/react";
+import store from "../../store/store";
 import { Provider } from "react-redux";
 
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
-let initialState = {};
+afterEach(cleanup);
+render(
+  <Provider store={store}>
+    <Header />
+  </Provider>
+);
 
-const setUp = (props = {}) => {
-  const store = mockStore(initialState);
-  const component = shallow(
-    <Provider store={store}>
-      <Header {...props} store={store} />
-    </Provider>,
-    {
-      context: { store: mockStore() },
-    }
-  );
-  return component;
-};
-// const findByAttr = (component, attribute) => {
-//   const wrap = component.find(`[data-test ='${attribute}']`);
-//   return wrap;
-// };
-
-describe("Header component", () => {
-  let component;
-  beforeEach(() => {
-    component = setUp();
-  });
-
-  it("should render without errors", () => {
-    let comp = shallow(<Header />);
-    const wrap = comp.find(".header");
-    expect(wrap.length).toBe(1);
+describe("Completely render <Header />", () => {
+  test("render the Header component without crashing", () => {
+    expect(screen.getAllByTestId("header")).toHaveLength(1);
+    expect(screen.getAllByTestId("search-textfield")).toHaveLength(1);
+    expect(screen.getAllByTestId("sort-category")).toHaveLength(1);
+    expect(screen.getAllByTestId("sort-order")).toHaveLength(1);
   });
 });
+

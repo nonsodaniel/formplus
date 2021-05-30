@@ -3,21 +3,31 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/templateActions";
 import TemplateList from "./TemplateList";
 import "./templates.scss";
+import loadingImg from '../assets/loading.gif'
+import networkImg from '../assets/internet.png'
 
 const Templates = (props) => {
+  let { getTemplates } = props;
   useEffect(() => {
-    props.getTemplates();
-  }, [props.getTemplates]);
+    getTemplates();
+  }, [getTemplates]);
   const isDataLoaded = props.pageData && props.pageData.length > 0
   return (
     <div className="wrap">
-      <h5 className="template-header">
+      {
+        isDataLoaded &&  <h5 className="template-header">
         {props && props.currentCategory} Templates
       </h5>
+      }
+     
       <div className={isDataLoaded  ? 'templates': 'no-templates' }>
         {
      props.errorMessage === 'Network Error' ? (
-       <p className="text-center">{props.errorMessage}</p>
+      <div className="text-center network-error">
+           <img src={networkImg} alt="Loading animation" />
+          <p>Unable to connect to the Internet</p> 
+      <button className="btn-network__error pointer" onClick={() => window.location.reload()}>Refresh</button>
+    </div>
      ) : (
       !props.loading ? (
         isDataLoaded ? (
@@ -34,7 +44,9 @@ const Templates = (props) => {
         )
       ) 
       : (
-        <p className="text-center">Loading...</p>
+        <div className="text-center">
+          <img src={loadingImg} alt="Loading animation" />
+        </div>
       )
      )
         }

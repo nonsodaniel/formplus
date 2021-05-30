@@ -9,6 +9,7 @@
 }
 .template-header{
         font-weight: 400;
+        color: #3F3E3E;
         padding-bottom: 1rem;
 }
 .template-card{
@@ -45,6 +46,20 @@
     }
 }
 
+.network-error{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+    .btn-network__error{
+        padding: 10px 40px;
+        border-radius: 2px;
+        border: none;
+        color: white;
+        background: #007bff;
+        margin-top: 1rem;
+    }
+}
 
 
 @media (max-width: 768px){

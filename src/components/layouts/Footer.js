@@ -3,7 +3,7 @@ import Pagination from "../pagination.js/Pagination";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" data-testid="footer">
       <Pagination />
     </footer>
   );
