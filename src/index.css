@@ -44,6 +44,15 @@
   text-align: center;
 }
 
+input[type=text] {   
+  /* Remove shadows on iphone input */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+/* Remove Zooming on Iphone */
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   select:focus, textarea:focus, input:focus, input:active {
           font-size: 13px;
