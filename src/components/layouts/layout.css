@@ -68,8 +68,9 @@ select{
     position: absolute;
     top: -8px;
     bottom: 0;
-    left: 20px;
-    z-index: 1;
+    left: 1.40rem;
+    height: 18px;
+    background: white;
     color: #8F8B8B;
 }
 .alert-danger {

@@ -9,6 +9,9 @@
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   }
+  *:focus {
+    outline: 0;
+  }
 
   
   body {

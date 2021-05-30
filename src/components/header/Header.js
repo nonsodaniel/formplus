@@ -45,12 +45,8 @@ const Header = (props) => {
         <div className="sort-row">
           <span className="sort-items sort-title">Sort By: </span>
           <div className="select-wrap sort-items">
-                <label htmlFor="sortCategory" className="sort-label">
-              
-              
+            <label htmlFor="sortCategory" className="sort-label">
               Category
-            
-            
             </label>
             <select
               className="select-item"
@@ -65,12 +61,8 @@ const Header = (props) => {
             </select>
           </div>
           <div className="select-wrap sort-items">
-                <label htmlFor="sortOrder" className="sort-label">
-              
-              
-             Order
-            
-            
+            <label htmlFor="sortOrder" className="sort-label">
+              Order
             </label>
             <select
               className="select-item"
@@ -78,7 +70,6 @@ const Header = (props) => {
               onChange={sortAlphabetically}
               data-test="sort-order"
             >
-              <option defaultValue>Alphabet</option>
               <option value="default">Default</option>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
@@ -86,11 +77,7 @@ const Header = (props) => {
           </div>
           <div className="select-wrap sort-items">
             <label htmlFor="sortDate" className="sort-label">
-              
-              
-               Date
-            
-            
+              Date
             </label>
             <select
               className="select-item"
@@ -98,7 +85,6 @@ const Header = (props) => {
               onChange={sortDate}
               data-test="sort-date"
             >
-              <option defaultValue>Date</option>
               <option value="default">Default</option>
               <option value="asc">Ascending</option>
               <option value="desc">Descending</option>
