@@ -95,7 +95,7 @@ select{
     margin-right: 15px;
 }
 .footer{
-    margin-bottom: 1rem;
+    margin-bottom: 3.5rem;
 }
 @media (max-width: 1024px){
     .select-item{

@@ -15,7 +15,7 @@ const Templates = (props) => {
   const isDataLoaded = props.pageData && props.pageData.length > 0
   let { errorMessage } = props;
   return (
-    <div className="wrap" data-testid="templates-wrap">
+    <div className="templates-wrap" data-testid="templates-wrap">
       {isDataLoaded && (
         <h5 className="template-header">
           {props && props.currentCategory} Templates
@@ -45,11 +45,15 @@ const Templates = (props) => {
               );
             })
           ) : (
-            <p className="text-center">No Data</p>
+            <p className="text-center">No Data Available!</p>
           )
         ) : (
           <div className="text-center">
-            <img src={loadingImg} alt="Loading animation" />
+            <img
+              src={loadingImg}
+              className="load_icon"
+              alt="Loading animation"
+            />
           </div>
         )}
       </div>
