@@ -2,7 +2,7 @@
 
 # Live Link
 
-This project live environment can be found in (https://github.com/nonsodaniel/formplus).
+This project live environment can be found in (https://formplus.vercel.app/).
 
 All requirements and functionalities have been implemented and bugs discovered have been fixed.
 
