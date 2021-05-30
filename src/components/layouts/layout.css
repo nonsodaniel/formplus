@@ -24,9 +24,11 @@
     padding-right: 50px;
 }
 
-select{display: block;
-    width: 100%;
-    padding: .375rem 2.25rem .375rem .75rem;
+select{
+    display: block;
+    width: 11rem;
+    height: 40px;
+    padding: .375rem 2.25rem .375rem 1.40rem;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -37,7 +39,7 @@ select{display: block;
     background-position: right .75rem center;
     background-size: 16px 12px;
     border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border-radius: 2px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -47,6 +49,7 @@ select{display: block;
 }
 .sort-items{
     margin-right: 1rem;
+    position: relative;
 }
 .sort-items:last-child{
     margin-right: 0;
@@ -59,6 +62,15 @@ select{display: block;
 }
 .select-item{
     font-size: var(--small-text);
+}
+.sort-label{
+    font-size: 12px;
+    position: absolute;
+    top: -8px;
+    bottom: 0;
+    left: 20px;
+    z-index: 1;
+    color: #8F8B8B;
 }
 .alert-danger {
     color: #252525;
@@ -85,6 +97,9 @@ select{display: block;
     margin-bottom: 1rem;
 }
 @media (max-width: 1024px){
+    .select-item{
+        width: 100%;
+    }
     .header-wrap {
        flex-direction: column;
        margin: 1rem auto 1rem auto;

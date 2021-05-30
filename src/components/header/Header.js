@@ -45,6 +45,13 @@ const Header = (props) => {
         <div className="sort-row">
           <span className="sort-items sort-title">Sort By: </span>
           <div className="select-wrap sort-items">
+                <label htmlFor="sortCategory" className="sort-label">
+              
+              
+              Category
+            
+            
+            </label>
             <select
               className="select-item"
               aria-label="select"
@@ -58,6 +65,13 @@ const Header = (props) => {
             </select>
           </div>
           <div className="select-wrap sort-items">
+                <label htmlFor="sortOrder" className="sort-label">
+              
+              
+             Order
+            
+            
+            </label>
             <select
               className="select-item"
               aria-label="select"
@@ -71,6 +85,13 @@ const Header = (props) => {
             </select>
           </div>
           <div className="select-wrap sort-items">
+            <label htmlFor="sortDate" className="sort-label">
+              
+              
+               Date
+            
+            
+            </label>
             <select
               className="select-item"
               aria-label="select"
